@@ -3,6 +3,7 @@ T3-Unlearning
 
 Official page for the paper:
 **"Temper-Then-Tilt: Principled Unlearning for Generative Models through Tempering and Classifier Guidance" (ICML 2026)**
+
 Paper: [https://arxiv.org/abs/2505.22601](https://arxiv.org/abs/2602.10217)
 
 ---
