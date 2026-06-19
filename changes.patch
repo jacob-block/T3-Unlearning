@@ -1,0 +1,50 @@
+--- a/src/trainer/__init__.py
++++ b/src/trainer/__init__.py
+@@ -15,6 +15,7 @@
+ from trainer.unlearn.satimp import SatImp
+ from trainer.unlearn.wga import WGA
+ from trainer.unlearn.pdu import PDU
++from trainer.unlearn.t3 import T3
+ 
+ 
+ import logging
+@@ -99,3 +100,4 @@
+ _register_trainer(SatImp)
+ _register_trainer(WGA)
+ _register_trainer(PDU)
++_register_trainer(T3)
+--- a/src/model/__init__.py
++++ b/src/model/__init__.py
+@@ -4,6 +4,7 @@
+ import os
+ import torch
+ import logging
++from model.t3 import T3CausalLM
+ from model.probe import ProbedLlamaForCausalLM
+ 
+ hf_home = os.getenv("HF_HOME", default=None)
+@@ -104,4 +105,5 @@
+ 
+ # register models
+ _register_model(AutoModelForCausalLM)
++_register_model(T3CausalLM)
+ _register_model(ProbedLlamaForCausalLM)
+--- a/src/evals/metrics/__init__.py
++++ b/src/evals/metrics/__init__.py
+@@ -22,6 +22,7 @@
+     hm_aggregate,
+     classifier_prob,
+ )
++from evals.metrics.t3 import t3_loss, t3_accuracy
+ 
+ METRICS_REGISTRY: Dict[str, UnlearningMetric] = {}
+ 
+@@ -52,6 +53,8 @@
+ 
+ 
+ # Register metrics here
++_register_metric(t3_loss)
++_register_metric(t3_accuracy)
+ _register_metric(probability)
+ _register_metric(probability_w_options)
+ _register_metric(rouge)
