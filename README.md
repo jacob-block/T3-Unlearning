@@ -8,31 +8,28 @@ Paper: [https://arxiv.org/abs/2602.10217](https://arxiv.org/abs/2602.10217)
 
 ---
 
-### Codebase
+### Code
 
-This code is a minimal diff-only release to the [open-unlearning](https://github.com/locuslab/open-unlearning)
-repository which was used as the backbone for all experiments. It is intended to be overlaid onto a pinned checkout of
-`open-unlearning`; it is not a standalone copy of that project.
+T3-Unlearning is implemented in [open-unlearning](https://github.com/locuslab/open-unlearning), added in [#196](https://github.com/locuslab/open-unlearning/pull/196):
 
-Pinned upstream commit:
+- Method page and example sweep: [`community/methods/T3`](https://github.com/locuslab/open-unlearning/tree/main/community/methods/T3)
+- Model (frozen base LM + guidance head, guided decoding): [`src/model/t3.py`](https://github.com/locuslab/open-unlearning/blob/main/src/model/t3.py)
+- Trainer: [`src/trainer/unlearn/t3.py`](https://github.com/locuslab/open-unlearning/blob/main/src/trainer/unlearn/t3.py)
+- Config: [`configs/trainer/T3.yaml`](https://github.com/locuslab/open-unlearning/blob/main/configs/trainer/T3.yaml)
+- Metrics: [`src/evals/metrics/t3.py`](https://github.com/locuslab/open-unlearning/blob/main/src/evals/metrics/t3.py)
 
-```text
-4ad738aaf60f6a4385f6e2506d01da99e76c31f3
+---
+
+### Quick Start
+
+Install open-unlearning following its [installation instructions](https://github.com/locuslab/open-unlearning#-quickstart), then from the open-unlearning root:
+
+```bash
+python setup_data.py --eval
+bash community/methods/T3/run.sh
 ```
 
----
-
-### Setup
-
-Run `setup.sh` uncommenting and changing the `T3_UNLEARNING_DIR` as needed.
-
-Note that the specific unlearning parameters for T3-Unlearning and the other methods may need to be tuned for each specific user environment or setup.
-
----
-
-### Local Run
-
-Run `run.sh` uncommenting and changing the `T3_UNLEARNING_DIR` as needed.
+Note that the unlearning hyperparameters for T3-Unlearning and the other methods may need to be tuned for each specific user environment or setup.
 
 ---
 
